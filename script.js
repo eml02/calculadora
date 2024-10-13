@@ -13,3 +13,22 @@ function multiplicacion(factor1, factor2) {
 function division(dividendo, divisor) {
     return dividendo / divisor;
 }
+
+function operate(operador, numero1, numero2) {
+    switch (operador) {
+        case '+':
+            return suma(numero1, numero2);
+            break;
+        case '-':
+            return resta(numero1, numero2);
+            break;
+        case '*':
+            return multiplicacion(numero1, numero2);
+            break;
+        case '/':
+            return division(numero1, numero2);
+            break;
+        default:
+            break;
+    }
+}
