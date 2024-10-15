@@ -32,3 +32,7 @@ function operate(operador, numero1, numero2) {
             break;
     }
 }
+
+function agregarValor(valor) {
+    document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + valor; 
+}
