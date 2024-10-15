@@ -33,6 +33,15 @@ function operate(operador, numero1, numero2) {
     }
 }
 
+let operadores = ["+", "-", "*", "/"];
+
 function agregarValor(valor) {
-    document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + valor; 
+    if (operadores.includes(valor)) {
+        let operando1 = document.getElementById('calcDisplay').value;
+        let operador = valor;
+        //console.log(operando1, "ssssssss", operador);
+    } 
+    document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + valor;
+    
+    
 }
