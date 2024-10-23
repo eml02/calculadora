@@ -6,37 +6,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input type="text" id="calcDisplay">
+    <input type="text" id="calcDisplay" value="0">
     <div class="numpad">
     <div class="numeros">
-    <button>C</button>
+    <button onclick="limpiarPantalla()">C</button>
     <div>
-    <button onclick="agregarValor(7)">7</button>
-    <button onclick="agregarValor(8)">8</button>
-    <button onclick="agregarValor(9)">9</button>
+    <button onclick="actualizarDisplay(7)">7</button>
+    <button onclick="actualizarDisplay(8)">8</button>
+    <button onclick="actualizarDisplay(9)">9</button>
     </div>
     <div>
-    <button onclick="agregarValor(4)">4</button>
-    <button onclick="agregarValor(5)">5</button>
-    <button onclick="agregarValor(6)">6</button>
+    <button onclick="actualizarDisplay(4)">4</button>
+    <button onclick="actualizarDisplay(5)">5</button>
+    <button onclick="actualizarDisplay(6)">6</button>
     </div>
     <div>
-    <button onclick="agregarValor(1)">1</button>
-    <button onclick="agregarValor(2)">2</button>
-    <button onclick="agregarValor(3)">3</button>
+    <button onclick="actualizarDisplay(1)">1</button>
+    <button onclick="actualizarDisplay(2)">2</button>
+    <button onclick="actualizarDisplay(3)">3</button>
     </div>
-    <button onclick="agregarValor(0)">0</button>
+    <button onclick="actualizarDisplay(0)">0</button>
     </div>    
     <div class="operadores">
     <div>
-    <button onclick="agregarValor('+')">+</button>
-    <button>-</button>
+    <button onclick="actualizarDisplay('+')">+</button>
+    <button onclick="actualizarDisplay('-')">-</button>
     </div>
     <div>
-    <button>*</button>
-    <button>/</button>
+    <button onclick="actualizarDisplay('*')">*</button>
+    <button onclick="actualizarDisplay('/')">/</button>
     </div>
-    <button>=</button>
+    <button onclick="actualizarDisplay('')">=</button>
     </div>
     </div>
 </body>

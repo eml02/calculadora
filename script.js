@@ -33,15 +33,34 @@ function operate(operador, numero1, numero2) {
     }
 }
 
-let operadores = ["+", "-", "*", "/"];
+let listaOperadores = ["+", "-", "*", "/"];
+let numero1 = 0;
+let numero2 = 0;
+let operador = '';
 
-function agregarValor(valor) {
-    if (operadores.includes(valor)) {
-        let operando1 = document.getElementById('calcDisplay').value;
-        let operador = valor;
-        //console.log(operando1, "ssssssss", operador);
-    } 
-    document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + valor;
-    
-    
+
+function actualizarDisplay(valor) {
+    let valorActualDisplay = document.getElementById('calcDisplay').value;
+    if (listaOperadores.includes(valor) && valorActualDisplay == 0) {
+        document.getElementById('calcDisplay').value = 0;
+    } else if (listaOperadores.includes(valor) && listaOperadores.includes(valorActualDisplay[valorActualDisplay.length -1])) {
+        document.getElementById('calcDisplay').value = valorActualDisplay.substring(0, valorActualDisplay.length -1) + valor;
+        
+        
+    } else if (valorActualDisplay == 0) {
+        document.getElementById('calcDisplay').value = valor;
+    } else {
+        document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + valor;
+    }
+    analizarValor(valor);
+}
+
+function analizarValor(valor) {
+    if (listaOperadores.includes(valor) && numero1 == 0) {
+        
+    }
+}
+
+function limpiarPantalla() {
+    document.getElementById('calcDisplay').value = 0;
 }
