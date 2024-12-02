@@ -2,6 +2,10 @@
     display: flex;
 }
 
+button {
+    font-size: 50px;
+}
+
 .operadores {
     display: flex;
     flex-direction: column;
