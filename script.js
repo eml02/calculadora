@@ -69,7 +69,7 @@ function actualizarDisplay(valor) {
         operador1 = valor;
         document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + valor;
         // el valor ingresado es un operador (luego de numeros), guardar en una variable
-    } else if (listaOperadores.includes(valor) && operador1 != ''){
+    } else if ((listaOperadores.includes(valor) && operador1 != '') || (valor == "=")){
         // el valor es un operador luego de un numero y habiendo ya un operador en display
         console.log("calctime");
         if (valorActualDisplay[0] == "-") {
@@ -90,8 +90,13 @@ function actualizarDisplay(valor) {
         console.log("resultado: ", resultado);
         numero1 = 0;
         numero2 = 0;
-        operador1 = valor;
-        document.getElementById('calcDisplay').value = resultado + valor;
+        if (valor != "="){
+            operador1 = valor;
+            document.getElementById('calcDisplay').value = resultado + valor;
+        } else { 
+            document.getElementById('calcDisplay').value = resultado;
+            operador1 = '';
+        }
 
     } else {
         document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + valor;
