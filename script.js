@@ -24,10 +24,6 @@ function multiplicacion(factor1, factor2) {
 }
 
 function division(dividendo, divisor) {
-    if (dividendo < 0) {
-        console.log("asdasdopaksdpaoksdopkasdasd");
-        return 0;
-    }
     return dividendo / divisor;
 }
 
