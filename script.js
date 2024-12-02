@@ -54,7 +54,6 @@ let listaOperadores = ["+", "-", "*", "/"];
 let numero1 = 0;
 let numero2 = 0;
 let operador1 = '';
-let operador2 = '';
 
 
 function actualizarDisplay(valor) {
@@ -88,18 +87,14 @@ function actualizarDisplay(valor) {
             numero1 = Number(numeros[0]);
             numero2 = Number(numeros[1]);
         }
-        operador2 = valor;
         console.log("nmuimero 1", numero1);
         console.log("nmuimero 2", numero2);
         console.log("oper 1", operador1);
-        console.log("oper 2", operador2);
-        //console.log(numero1, operador1, numero2, operador2);
         let resultado = operate(operador1, numero1, numero2);
         console.log("resultado: ", resultado);
-        
-        
-        
-        //document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + valor;
+        numero1 = 0;
+        numero2 = 0;
+        operador1 = valor;
         document.getElementById('calcDisplay').value = resultado + valor;
 
     } else {
@@ -117,7 +112,6 @@ function limpiarPantalla() {
     numero1 = 0;
     numero2 = 0;
     operador1 = '';
-    operador2 = '';
 }
 
 
