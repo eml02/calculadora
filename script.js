@@ -24,7 +24,7 @@ function multiplicacion(factor1, factor2) {
 }
 
 function division(dividendo, divisor) {
-    return dividendo / divisor;
+    return Number.parseFloat(dividendo / divisor).toFixed(2); // dos digitos despues de la coma
 }
 
 function operate(operador, numero1, numero2) {
@@ -114,10 +114,3 @@ function limpiarPantalla() {
     numero2 = 0;
     operador1 = '';
 }
-
-
-
-console.log(resta(7,2));
-console.log(resta(3,-2));
-console.log(resta(7,2));
-console.log(resta(-3,-8));
