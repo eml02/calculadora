@@ -1,8 +1,12 @@
 function suma(sumando1, sumando2) {
+    sumando1 = Number(sumando1);
+    sumando2 = Number(sumando2);
     return sumando1 + sumando2;
 }
 
 function resta(minuendo, sustraendo) {
+    minuendo = Number(minuendo);
+    sustraendo = Number(sustraendo);
     if ((minuendo => 0)) {
         if (sustraendo < 0) {
             return minuendo - sustraendo;
@@ -20,6 +24,8 @@ function resta(minuendo, sustraendo) {
 }
 
 function multiplicacion(factor1, factor2) {
+    factor1 = Number(factor1);
+    factor2 = Number(factor2);
     return factor1 * factor2;
 }
 
@@ -50,67 +56,94 @@ let listaOperadores = ["+", "-", "*", "/"];
 let numero1 = 0;
 let numero2 = 0;
 let operador1 = '';
+let resultado = 0;
 
 
-function actualizarDisplay(valor) {
-    let valorActualDisplay = document.getElementById('calcDisplay').value; // obtiene el string actual del campo calcDisplay
-    let valorDisplayAnterior = valorActualDisplay.substring(0, valorActualDisplay.length -1); // el valor del campo calcDisplay menos el ultimo caracter ingresado
-    if (listaOperadores.includes(valor) && valorActualDisplay == 0) {
-        document.getElementById('calcDisplay').value = 0;
-        //cuando ingresa un operador y el display esta en 0, mantener el 0 en el display
-    } else if (listaOperadores.includes(valor) && listaOperadores.includes(valorActualDisplay[valorActualDisplay.length -1])) {
-        document.getElementById('calcDisplay').value = valorDisplayAnterior + valor;
-        operador1 = valor;
-        //cuando el display no es 0, el valor nuevo es un operador y el ultimo valor ingresado era un operador tambien, reemplazar el operador
-    } else if (valorActualDisplay == 0) {
-        document.getElementById('calcDisplay').value = valor;
-        // si el display esta en 0 y el valor no es un operador, reemplazar el display por el nuevo valor
-    } else if (listaOperadores.includes(valor) && operador1 == '') {
-        operador1 = valor;
-        document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + valor;
-        // el valor ingresado es un operador (luego de numeros), guardar en una variable
-    } else if ((listaOperadores.includes(valor) && operador1 != '') || (valor == "=")){
-        // el valor es un operador luego de un numero y habiendo ya un operador en display
-        console.log("calctime");
-        if (valorActualDisplay[0] == "-") {
-            console.log("negartivo");
-            let valorActualDisplayMenosSignoNeg = valorActualDisplay.substring(1);
-            let numeros = valorActualDisplayMenosSignoNeg.split(operador1);
-            numero1 = -Number(numeros[0]);
-            numero2 = Number(numeros[1]);
-        } else {
-            let numeros = valorActualDisplay.split(operador1);
-            numero1 = Number(numeros[0]);
-            numero2 = Number(numeros[1]);
-        }
-        console.log("nmuimero 1", numero1);
-        console.log("nmuimero 2", numero2);
-        console.log("oper 1", operador1);
-        let resultado = operate(operador1, numero1, numero2);
-        console.log("resultado: ", resultado);
-        numero1 = 0;
-        numero2 = 0;
-        if (valor != "="){
-            operador1 = valor;
-            document.getElementById('calcDisplay').value = resultado + valor;
-        } else { 
-            document.getElementById('calcDisplay').value = resultado;
-            operador1 = '';
-        }
-
-    } else {
-        document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + valor;
+function analizarValorDisplay(valorActualDisplay) {
+    valorDisplayAnterior = valorActualDisplay.substring(0, valorActualDisplay.length -1);
+    ultimoCaracter = valorActualDisplay[(valorActualDisplay.length -1)];
+    if (valorActualDisplay == "0") {
+        return 0; // display en 0
+    } else if (!listaOperadores.some(r=>valorActualDisplay.includes(r))) {
+        return 1; // display incluye numeros sin operador
+    } else if (listaOperadores.includes(ultimoCaracter)) {
+        return 2;
+    } else if (sonNumerosSeparadosPorUnOperador(valorActualDisplay) == true) {
+        return 3;
     }
-    analizarValorDisplay(valor);
 }
 
-function analizarValorDisplay(valor) {
-    //console.log("a")
+function sonNumerosSeparadosPorUnOperador(cadena) {
+    let flag = 0;
+    listaOperadores.forEach((operador) => {
+        if (cadena.split(operador).length > 1) {
+            flag = 1;
+        }
+    });
+    if (flag == 1) {
+        return true;
+    } else {
+        return false;
+    }
 }
+
 
 function limpiarPantalla() {
     document.getElementById('calcDisplay').value = 0;
     numero1 = 0;
     numero2 = 0;
     operador1 = '';
+    resultado = 0;
 }
+
+function actualizarDisplay(caracter) {
+    let valorActualDisplay = document.getElementById('calcDisplay').value; // obtiene el string actual del campo calcDisplay (antes de actualizar con el caracter nuevo)
+    console.log(valorActualDisplay);
+    let estadoDisplay = analizarValorDisplay(valorActualDisplay);
+    switch (estadoDisplay) {
+        case 0:
+            //actualizar con nuevo caracter
+            document.getElementById('calcDisplay').value = caracter;
+            break;
+        case 1:
+            if (listaOperadores.includes(caracter)) {
+                numero1 = valorActualDisplay;
+                operador1 = caracter;
+                console.log("numero1: ", numero1);
+                console.log("operador", operador1);
+            }
+            document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter;
+            break;
+        case 2:
+            if (listaOperadores.includes(caracter)) {
+                //borrar el operador anterior reemplazar por el recien ingresado
+                operador1 = caracter;
+                document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value.slice(0,-1) + caracter;
+            } else {
+                document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter;
+            }
+            break;
+        case 3:
+            document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter; // actualiza el display
+            //console.log(numero1, operador1);
+            if (listaOperadores.includes(caracter)) {
+                numero2 = valorActualDisplay.split(operador1)[1];
+                resultado = operate(operador1, numero1, numero2);
+                numero1 = resultado;
+                operador1 = caracter;
+                document.getElementById('calcDisplay').value = resultado + caracter;
+            } else if (caracter == "=") {
+                numero2 = valorActualDisplay.split(operador1)[1];
+                resultado = operate(operador1, numero1, numero2);
+                document.getElementById('calcDisplay').value = resultado;
+            }
+        default:
+            break;
+    }
+
+    //document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter; // actualiza el display
+    console.log(estadoDisplay);
+    
+
+}
+
