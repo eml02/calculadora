@@ -63,8 +63,6 @@ let operador1 = '';
 let resultado = 0;
 let despuesDeIgual = false;
 
-
-
 function analizarValorDisplay(valorActualDisplay) {
     valorDisplayAnterior = valorActualDisplay.substring(0, valorActualDisplay.length -1);
     ultimoCaracter = valorActualDisplay[(valorActualDisplay.length -1)];
@@ -93,7 +91,6 @@ function sonNumerosSeparadosPorUnOperador(cadena) {
     }
 }
 
-
 function limpiarPantalla() {
     document.getElementById('calcDisplay').value = 0;
     numero1 = 0;
@@ -108,7 +105,7 @@ function actualizarDisplay(caracter) {
         despuesDeIgual = false;
     }
     let valorActualDisplay = document.getElementById('calcDisplay').value; // obtiene el string actual del campo calcDisplay (antes de actualizar con el caracter nuevo)
-    console.log(valorActualDisplay);
+    //console.log(valorActualDisplay);
     let estadoDisplay = analizarValorDisplay(valorActualDisplay);
     switch (estadoDisplay) {
         case 0:
@@ -126,8 +123,8 @@ function actualizarDisplay(caracter) {
             if (listaOperadores.includes(caracter)) {
                 numero1 = valorActualDisplay;
                 operador1 = caracter;
-                console.log("numero1: ", numero1);
-                console.log("operador", operador1);
+                // console.log("numero1: ", numero1);
+                // console.log("operador", operador1);
                 document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter;
             } else if (caracter == "=") {
                 document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value;
@@ -165,10 +162,7 @@ function actualizarDisplay(caracter) {
         default:
             break;
     }
-
     //document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter; // actualiza el display
-    console.log(estadoDisplay);
-    
-
+    //console.log(estadoDisplay);
 }
 
