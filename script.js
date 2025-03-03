@@ -30,6 +30,10 @@ function multiplicacion(factor1, factor2) {
 }
 
 function division(dividendo, divisor) {
+    if (divisor == 0) {
+        alert("No se puede dividir por 0. Ojo con eso.");
+        return 0;
+    }
     return Number.parseFloat(dividendo / divisor).toFixed(2); // dos digitos despues de la coma
 }
 
