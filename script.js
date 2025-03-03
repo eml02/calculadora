@@ -61,6 +61,8 @@ let numero1 = 0;
 let numero2 = 0;
 let operador1 = '';
 let resultado = 0;
+let despuesDeIgual = false;
+
 
 
 function analizarValorDisplay(valorActualDisplay) {
@@ -101,6 +103,10 @@ function limpiarPantalla() {
 }
 
 function actualizarDisplay(caracter) {
+    if (despuesDeIgual) {
+        limpiarPantalla();
+        despuesDeIgual = false;
+    }
     let valorActualDisplay = document.getElementById('calcDisplay').value; // obtiene el string actual del campo calcDisplay (antes de actualizar con el caracter nuevo)
     console.log(valorActualDisplay);
     let estadoDisplay = analizarValorDisplay(valorActualDisplay);
@@ -153,6 +159,8 @@ function actualizarDisplay(caracter) {
                 numero2 = valorActualDisplay.split(operador1)[1];
                 resultado = operate(operador1, numero1, numero2);
                 document.getElementById('calcDisplay').value = resultado;
+                despuesDeIgual = true;
+
             }
         default:
             break;
