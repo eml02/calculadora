@@ -102,23 +102,36 @@ function actualizarDisplay(caracter) {
     let estadoDisplay = analizarValorDisplay(valorActualDisplay);
     switch (estadoDisplay) {
         case 0:
-            //actualizar con nuevo caracter
-            document.getElementById('calcDisplay').value = caracter;
+            if (listaOperadores.includes(caracter)) {
+                numero1 = 0;
+                operador1 = caracter;
+                document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter;
+            } else if (caracter == "=") {
+                document.getElementById('calcDisplay').value = "0";                
+            } else {
+                document.getElementById('calcDisplay').value = caracter;
+            }
             break;
-        case 1:
+        case 1: 
             if (listaOperadores.includes(caracter)) {
                 numero1 = valorActualDisplay;
                 operador1 = caracter;
                 console.log("numero1: ", numero1);
                 console.log("operador", operador1);
+                document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter;
+            } else if (caracter == "=") {
+                document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value;
+            } else {
+                document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter;
             }
-            document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter;
             break;
         case 2:
             if (listaOperadores.includes(caracter)) {
                 //borrar el operador anterior reemplazar por el recien ingresado
                 operador1 = caracter;
                 document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value.slice(0,-1) + caracter;
+            } else if (caracter == "=") {
+                document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value;
             } else {
                 document.getElementById('calcDisplay').value = document.getElementById('calcDisplay').value + caracter;
             }
