@@ -1,14 +1,45 @@
-.numpad {
+#calcDisplay{
     display: flex;
+    width: 280px;
+    font-size: large;
+    padding: 10px;
 }
 
-button {
-    font-size: 50px;
-}
-
-.operadores {
+body {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    justify-content: end;
+    align-items: center;
 }
+
+.numpad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ .numeros {
+    padding: 10px;
+    margin: 10px;
+} 
+
+button {
+    background-color: lightslategray;
+    color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 20px;
+    margin: 2px;
+    width: 70px;
+    height: 70px;
+}
+
+#cero {
+    width: 148px;
+}
+
+
+#clear {
+    width: 226px;
+}
+

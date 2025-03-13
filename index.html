@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Document</title>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <input type="text" id="calcDisplay" value="0">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <input type="text" id="calcDisplay" value="0" />
     <div class="numpad">
-    <div class="numeros">
-    <button onclick="limpiarPantalla()">C</button>
-    <div>
-    <button onclick="actualizarDisplay(7)">7</button>
-    <button onclick="actualizarDisplay(8)">8</button>
-    <button onclick="actualizarDisplay(9)">9</button>
+      <div class="numeros">
+        <div>
+            <button id="clear" onclick="limpiarPantalla()">C</button>
+        </div>
+        <div>
+          <button onclick="actualizarDisplay(7)">7</button>
+          <button onclick="actualizarDisplay(8)">8</button>
+          <button onclick="actualizarDisplay(9)">9</button>
+          <button onclick="actualizarDisplay('/')">/</button>
+        </div>
+        <div>
+          <button onclick="actualizarDisplay(4)">4</button>
+          <button onclick="actualizarDisplay(5)">5</button>
+          <button onclick="actualizarDisplay(6)">6</button>
+          <button onclick="actualizarDisplay('*')">*</button>
+        </div>
+        <div>
+          <button onclick="actualizarDisplay(1)">1</button>
+          <button onclick="actualizarDisplay(2)">2</button>
+          <button onclick="actualizarDisplay(3)">3</button>
+          <button onclick="actualizarDisplay('-')">-</button>
+          
+        </div>
+        <div>
+            <button id="cero" onclick="actualizarDisplay(0)">0</button>
+            <button id="igual" onclick="actualizarDisplay('=')">=</button>
+            <button onclick="actualizarDisplay('+')">+</button>
+
+        </div>
+      </div>
     </div>
-    <div>
-    <button onclick="actualizarDisplay(4)">4</button>
-    <button onclick="actualizarDisplay(5)">5</button>
-    <button onclick="actualizarDisplay(6)">6</button>
-    </div>
-    <div>
-    <button onclick="actualizarDisplay(1)">1</button>
-    <button onclick="actualizarDisplay(2)">2</button>
-    <button onclick="actualizarDisplay(3)">3</button>
-    </div>
-    <button onclick="actualizarDisplay(0)">0</button>
-    </div>    
-    <div class="operadores">
-    <div>
-    <button onclick="actualizarDisplay('+')">+</button>
-    <button onclick="actualizarDisplay('-')">-</button>
-    </div>
-    <div>
-    <button onclick="actualizarDisplay('*')">*</button>
-    <button onclick="actualizarDisplay('/')">/</button>
-    </div>
-    <button onclick="actualizarDisplay('=')">=</button>
-    </div>
-    </div>
-</body>
+  </body>
 </html>
