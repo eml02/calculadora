@@ -1,8 +1,10 @@
 #calcDisplay{
-    display: flex;
-    width: 280px;
-    font-size: large;
+    width: 310px;
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
     padding: 10px;
+    border: 2px solid black;
+    text-align: end;
 }
 
 body {
@@ -35,11 +37,17 @@ button {
 }
 
 #cero {
-    width: 148px;
+    width: 226px;
 }
 
+.operador {
+    width: 100px;
+}
 
 #clear {
     width: 226px;
 }
 
+#igual {
+    width: 100px;
+}
